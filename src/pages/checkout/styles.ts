@@ -115,9 +115,8 @@ export const PaymentDiv = styled.div`
 `;
 
 export const TotalPurchase = styled.div`
-  /* margin-top: 100px; */
-  /* position: absolute; */
   width: 100%;
   height: 92px;
-  background: red;
+  background: blue;
+  bottom: 0;
 `;
