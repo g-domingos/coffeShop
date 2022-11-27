@@ -11,7 +11,6 @@ export const FirstDivLayout = styled.div`
 
 export const TextDiv = styled.div`
   /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -23,6 +22,10 @@ export const TextDiv = styled.div`
   height: 192px;
   left: calc(50% - 588px / 2 - 266px);
   top: calc(50% - 192px / 2 - 82px);
+
+  & > h1 {
+    font-weight: 800;
+  }
 `;
 
 export const ImgDiv = styled.div`
@@ -39,4 +42,14 @@ export const GridTexts = styled.div`
   height: 84px;
   left: calc(50% - 567px / 2 - 276.5px);
   top: calc(50% - 84px / 2 + 122px);
+  font-weight: 700;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & > div:last-child{
+    margin-top: 20px;
+  }
 `;

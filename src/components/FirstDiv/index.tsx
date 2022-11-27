@@ -3,8 +3,6 @@ import CafeImagem from "../../images/Imagem.svg";
 import { useContext } from "react";
 
 export function FirstDiv() {
-
-  
   return (
     <FirstDivLayout>
       <TextDiv>
@@ -18,12 +16,14 @@ export function FirstDiv() {
         <img src={CafeImagem}></img>
       </ImgDiv>
       <GridTexts>
-        <label>
-          Compra simples rapida e segura 
-        </label>
-        <label>
-          Embalagem mantém o café intacto
-        </label>
+        <div>
+          <label>Compra simples rapida e segura</label>
+          <label>Embalagem mantém o café intacto</label>
+        </div>
+        <div>
+          <label>Entrega rápida e rastreada</label>
+          <label>O café chega fresquinho até você</label>
+        </div>
       </GridTexts>
     </FirstDivLayout>
   );
