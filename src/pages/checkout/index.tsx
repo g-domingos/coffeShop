@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { createRef, MutableRefObject, useContext, useEffect, useRef, useState } from "react";
 import { fullCoffeList } from "../../App";
 import { SignupForm } from "./formik";
 import {
@@ -24,10 +24,32 @@ import { PaymentButtonStyle } from "./button/styles";
 import { CheckoutCard } from "../../components/CheckoutCard";
 
 export function Checkout() {
-  const { coffeType, setCoffeType } = useContext(fullCoffeList);
+  const { coffeType, setCoffeType, formValues, setFormValues } = useContext(fullCoffeList);
   const [paymentType, setPaymentType] = useState("");
-
+  const [clickOn, setClickOn] = useState(false);
   
+  let totalValue = 0;
+  
+  if (coffeType.length > 1){
+
+    totalValue = coffeType
+    .filter((item: any) => item.price)
+    .map((item: any) => item.price)
+    .reduce((initial:number, number:number) => {return initial + number}).toFixed(2)
+  }
+
+
+
+  const showButton = () => {
+    return coffeType.length === 0 || paymentType === "";
+  };
+
+  const handleSubmit = () => {
+    setClickOn(true)
+    formValues.paymentType = paymentType
+    
+  };
+
 
   const handleSelectPaymentMethod = (method: string) => {
     switch (method) {
@@ -61,7 +83,12 @@ export function Checkout() {
                 Informe o Endereço onde deseja receber seu pedido
               </label>
             </AdressDelivery>
-            <SignupForm />
+            <SignupForm
+              paymentType={paymentType}
+              useref={clickOn}
+              formValues={formValues}
+              setFormValues={setFormValues}
+            />
           </AddressInformationDiv>
           <PaymentDiv>
             <div>
@@ -114,14 +141,32 @@ export function Checkout() {
                   quantity={item.quantity}
                   price={item.price}
                   img={item.img}
-                  
                 ></CheckoutCard>
               ))}
           </div>
           <div>
-            <TotalPurchase></TotalPurchase>
+            <TotalPurchase>
+              <div>
+                <div>Total de itens</div>
+                <div>R$ {totalValue}</div>
+              </div>
+              <div>
+                <div>Entrega</div>
+                <div>R$ 4,00</div>
+              </div>
+              <div>
+                <div>Total</div>
+                <div>R$ {+totalValue +4 }</div>                
+              </div>
+            </TotalPurchase>
             <div>
-              <ConfirmedButton available={!coffeType.length}/>
+              <ConfirmedButton
+                handleSubmit={handleSubmit}
+                available={showButton()}
+                setClickOn={setClickOn}
+                clickOn={clickOn}
+                paymentType={paymentType}
+              />
             </div>
           </div>
         </OrderResume>
@@ -129,3 +174,4 @@ export function Checkout() {
     </div>
   );
 }
+//!coffeType.length

@@ -35,10 +35,17 @@ export const CheckoutCardStyle = styled.div`
       display: flex; /* forces children to same row */
       flex: 1;
 
-      img {
+      /* img {
         height: 16px;
         width: 16px;
-      }
+      } */
     }
   }
+`;
+
+export const ButtonDivCheckout = styled.div`
+  display: flex;
+  gap: 4px;
+  width: 171px;
+  height: 32px;
 `;

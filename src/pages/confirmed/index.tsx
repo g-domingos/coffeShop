@@ -3,8 +3,12 @@ import Motoboy from "../../images/Illustration.svg";
 import MoneyCheckout from "../../images/MoneyIconChecl.svg";
 import TimeDelivery from "../../images/Time.svg";
 import DeliveryLocal from "../../images/DeliveryLocal.svg";
+import { useContext } from "react";
+import { fullCoffeList } from "../../App";
 
 export function Confirmed() {
+  const { formValues } = useContext(fullCoffeList);
+
   return (
     <FirstColumnDiv>
       <div>
@@ -13,20 +17,30 @@ export function Confirmed() {
         <BoardInfo>
           <div>
             <img src={DeliveryLocal} />
-            <label>Entrega em</label>
+            <div className="first">
+              <label>Entrega em</label>
+              <label>
+                {formValues.street}, {formValues.number} - {formValues.bairro} -{" "}
+                {formValues.city} / {formValues.state}
+              </label>
+            </div>
           </div>
           <div>
             <div>
               <img src={TimeDelivery} />
-              <div >
-                <label>Previsao de entrega</label><br/>
+              <div className="first">
+                <label>Previsao de entrega</label>
+
                 <label>20min - 30min</label>
               </div>
             </div>
           </div>
           <div>
             <img src={MoneyCheckout} />
-            <label>Pagamento na entrega</label>
+            <div className="first">
+              <label>Pagamento na entrega</label>
+              <label>Método de pagamento: {formValues.paymentType}</label>
+            </div>
           </div>
         </BoardInfo>
       </div>

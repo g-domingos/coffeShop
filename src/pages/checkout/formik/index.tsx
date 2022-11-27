@@ -1,11 +1,18 @@
 import { useFormik } from "formik";
+import { useContext, useEffect, useRef } from "react";
+import { fullCoffeList } from "../../../App";
 import { Formik } from "./styles";
 
-export const SignupForm = () => {
+export const SignupForm = ({ useref, paymentType }: any) => {
   // Note that we have to initialize ALL of fields with values. These
   // could come from props, but since we don’t want to prefill this form,
   // we just use an empty string. If we don’t do this, React will yell
   // at us.
+
+  const { setFormValues, formValues } = useContext(fullCoffeList);
+
+  const clickOnSubmit = useRef<any>();
+
   const formik = useFormik({
     initialValues: {
       postalCode: "",
@@ -15,11 +22,21 @@ export const SignupForm = () => {
       bairro: "",
       city: "",
       state: "",
+      paymentType: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      values.paymentType = paymentType
+      
+      setFormValues(values);
     },
   });
+
+  useEffect(() => {
+    if (useref === true) {
+      clickOnSubmit.current.click()
+    }
+  }, [useref]);
+
   return (
     <Formik onSubmit={formik.handleSubmit}>
       <div>
@@ -85,8 +102,13 @@ export const SignupForm = () => {
           onChange={formik.handleChange}
           value={formik.values.state}
         />
+        
       </div>
-      <button style={{display:"none"}} type="submit">Submit</button>
+      <button style={{display: "none"}} ref={clickOnSubmit} type="submit">
+        Submit
+      </button>
     </Formik>
   );
 };
+
+//

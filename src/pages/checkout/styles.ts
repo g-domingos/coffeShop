@@ -32,8 +32,14 @@ export const OrderResume = styled.div`
   margin-left: 32px;
   padding: 40px;
 
+  & > div:nth-child(1) {
+    height: 300px;
+    /* width: 150px; */
+    overflow: auto;
+  }
+
   & > div:last-child {
-    margin-top: 160px;
+    margin-top: 48px;
   }
 `;
 
@@ -117,6 +123,17 @@ export const PaymentDiv = styled.div`
 export const TotalPurchase = styled.div`
   width: 100%;
   height: 92px;
-  background: blue;
   bottom: 0;
+  justify-content: space-between;
+
+  & > div {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & > div:nth-child(3) {
+    font-weight: 700;
+    font-size: 20px;
+  }
 `;

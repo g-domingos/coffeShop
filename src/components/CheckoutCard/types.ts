@@ -3,4 +3,5 @@ export type PurchaseInfo = {
   name: string,
   quantity: number,
   price: number,
-  img: any};
+  img: any,
+};

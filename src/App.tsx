@@ -12,7 +12,16 @@ function App() {
 
   const [coffeQuantity, setCoffeQuantity] = useState(0)
   const [coffeType, setCoffeType] = useState([{}]);
-
+  const [formValues, setFormValues] = useState({
+    postalCode: "",
+    street: "",
+    number: "",
+    complement: "",
+    bairro: "",
+    city: "",
+    state: "",
+    paymentType: "",
+  });
   
   const coffeList = [
     {
@@ -63,7 +72,7 @@ function App() {
 
 
   return (
-    <fullCoffeList.Provider value={{ coffeList, setCoffeQuantity, coffeQuantity, coffeType, setCoffeType }}>
+    <fullCoffeList.Provider value={{ coffeList, setCoffeQuantity, coffeQuantity, coffeType, setCoffeType, formValues, setFormValues }}>
 
       <BrowserRouter>
         <Router />

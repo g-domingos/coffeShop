@@ -40,11 +40,10 @@ export const RemoveButton = ({onHandleRemove, id} :any) => {
     setCoffeQuantity(filteredPurchase.length)
     
   } 
-  console.log(coffeQuantity)
   return (
 
     <RemoveButtonStyle onClick={onHandleDelete}>
-      <img src={TrashCan} />
+      <img style={{height: "16px", width: "16px"}} src={TrashCan} />
       <label>REMOVER</label>
     </RemoveButtonStyle>
   );

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ButtonPlusMinus} from "../CoffeCard/button";
-import { CheckoutCardStyle } from "./styles";
+import { ButtonDivCheckout, CheckoutCardStyle } from "./styles";
 import { PurchaseInfo } from "./types";
 import { RemoveButton } from "../CoffeCard/button";
 import { fullCoffeList } from "../../App";
@@ -15,7 +15,7 @@ export const CheckoutCard = ({id, name, price, quantity, img,  }: PurchaseInfo) 
       </div>
       <div>
         <div>{name}</div>
-        <div>
+        <ButtonDivCheckout>
           <ButtonPlusMinus
             styled
             setContCoffe={setAmountCoffe}
@@ -24,9 +24,9 @@ export const CheckoutCard = ({id, name, price, quantity, img,  }: PurchaseInfo) 
 
           <RemoveButton id={id}/>
             
-        </div>
+        </ButtonDivCheckout>
       </div>
-      <div>R$ {price}</div>
+      <div>R$ {(price * amountCoffe).toFixed(2)}</div>
     </CheckoutCardStyle>
   );
 };

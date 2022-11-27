@@ -7,7 +7,6 @@ export const ButtonDiv = styled.div<{ styled?: boolean }>`
   padding: ${(props) => (props.styled ? "0px" : "8px")};
   /* gap: 4px; */
   width: 72px;
-  height: ${(props) => (props.styled ? "38px" : "38px")};
   background: #e6e5e5;
   border-radius: 6px;
   box-sizing: border-box;
@@ -27,19 +26,19 @@ export const ButtonDiv = styled.div<{ styled?: boolean }>`
 
 export const RemoveButtonStyle = styled.div`
   width: 91px;
-  height: 38px;
-  display: flex;
+  /* height: 38px; */
+  align-content: center;
   background: #e6e5e5;
-  justify-content: center;
   border-radius: 6px;
-  margin-left: 12px;
+  /* margin-left: 12px; */
   color: #574f4d;
+  font-style: normal;
+  font-weight: 400;
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
 
   label {
-    padding: 8px;
-    justify-content: center;
+    margin: auto;
   }
 `;

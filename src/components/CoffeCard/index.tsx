@@ -46,7 +46,6 @@ export function CoffeCard({
   useEffect(() => {
     //estado que vem do useContext para plotar o numero dos pedidos no carrinho que está no header.
     setCoffeQuantity(coffeType.filter((item:any) => item.id).length);
-    console.log(coffeType)
   }, [coffeType]);
   return (
     <>
